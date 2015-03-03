@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  */
 public class BookDAO {
-	public Book findBook() {
+	public Book findBook(Book book) {
 		Connection conn = null;
 		//Book book = null;
 		try{
@@ -23,16 +23,16 @@ public class BookDAO {
 					("jdbc:mysql://192.168.137.0:3306/bn_books","bn_user","");
 
 			//Select文を準備
-			String sql = "select * from book ";
-				//	+ "where book_name = ? or"
-				//	+ "where author_name = ?  or"
-				//	+ "where publisher_name = ? ";
+			String sql = "select * from book "
+					+ "where book_name = ? or"
+					+ "where author_name = ?  or"
+					+ "where publisher_name = ? ";
 
 			//準備したSQL文をPreparedStatementインスタンスに渡す
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			//pStmt.setString(2, book.getBook_name());
-			//pStmt.setString(3, book.getAuthor_name());
-			//pStmt.setString(4, book.getPublisher_name());
+			pStmt.setString(1, book.getBook_name());
+			pStmt.setString(2, book.getAuthor_name());
+			pStmt.setString(3, book.getPublisher_name());
 
 
 			//select文を実行し、ResultSetインスタンスにSelect文の実行結果を取得
@@ -50,7 +50,7 @@ public class BookDAO {
 				String  modify_datetime = rs.getString("modify_datetime");
 				String 	create_datetime = rs.getString("create_datetime");
 
-				 Book book = new Book(isbn,book_name,author_name,
+				 Book book2 = new Book(isbn,book_name,author_name,
 				 publisher_name, price, release_date,
 						 category_id, modify_datetime, create_datetime);
 
@@ -78,6 +78,6 @@ public class BookDAO {
 			}
 		}
 		//検索結果をまたはnullを返す
-		return book;
+		return book2;
 	}
 }
