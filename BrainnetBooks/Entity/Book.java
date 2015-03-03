@@ -1,21 +1,27 @@
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
  * @author 白川
- *Book(javabeans)Entity
+ *Book(javabeans)
  *パラメータを取得してインスタンスに格納するためにBookクラスを作成する
+ *@Entity
  */
 public class Book implements Serializable{
 
 
-	//現在日時を取得(保留)
-	//Date nowDate = new Date();
+	//現在日時を取得
+	Date d = new Date();
+//	SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+//	Timestamp t = new Timestamp(modify_datetime);
 
 	//
-	//SimpleDateFormat formatA = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+	//
 
-
+//	private static String TIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
+//	System.out.println(TimestampUtil.formattedTimestamp(TimestampUtil.current(), TIME_FORMAT));
 	/**
 	 * 格フィールドをprivateで設定
 	 */
@@ -23,11 +29,11 @@ public class Book implements Serializable{
 	private String	book_name; 			//書籍名
 	private String	author_name;		//著者名
 	private String	publisher_name;		//出版社名
-	private int   	price;				//税抜価格
+	private short   	price;				//税抜価格
 	private String  release_date;		//発売日
-	private int 	category_id;		//カテゴリID
-	private String  modify_datetime;	//更新日時
-	private String 	create_datetime;	//登録日時
+	private short 	category_id;		//カテゴリID
+	private Date  modify_datetime = d;	//更新日時
+	private Date 	create_datetime = d;	//登録日時
 
 	/**
 	 * 引数なしでもnewできるような戻り値なしのコンストラクタ
@@ -38,8 +44,8 @@ public class Book implements Serializable{
 	/**
 	 * 戻り値ありのコンストラクタ
 	 */
-	public Book(String isbn,String book_name,String author_name,String publisher_name,int price,String release_date,
-			int category_id,String modify_datetime,String create_datetime){
+	public Book(String isbn,String book_name,String author_name,String publisher_name,short price,String release_date,
+			short category_id,Date modify_datetime,Date create_datetime){
 		this.isbn = isbn;
 		this.book_name = book_name;
 		this.author_name = author_name;
@@ -56,6 +62,20 @@ public class Book implements Serializable{
 		// TODO 自動生成されたコンストラクター・スタブ
 		this.isbn = isbn;
 		this.book_name = book_name;
+	}
+	public Book(String isbn, String book_name, String author_name,
+			String publisher_name, short price, String release_date,
+			short category_id, Date modify_datetime) {
+		// TODO 自動生成されたコンストラクター・スタブ
+		this.isbn = isbn;
+		this.book_name = book_name;
+		this.author_name = author_name;
+		this.publisher_name = publisher_name;
+		this.price = price;
+		this.release_date = release_date;
+		this.category_id = category_id;
+		this.modify_datetime = modify_datetime;
+
 	}
 	/**
 	 * 格フィールドのゲッター
@@ -74,7 +94,7 @@ public class Book implements Serializable{
 	public String getPublisher_name() {
 		return publisher_name;
 	}
-	public int getPrice(){
+	public short getPrice(){
 		return price;
 	}
 
@@ -82,14 +102,14 @@ public class Book implements Serializable{
 		return release_date;
 	}
 
-	public int getCategory_id() {
+	public short getCategory_id() {
 		return category_id;
 	}
 
-	public String getModify_datetime() {
+	public Date getModify_datetime() {
 		return modify_datetime;
 	}
-	public String getCreate_datetime() {
+	public Date getCreate_datetime() {
 		return create_datetime;
 	}
 

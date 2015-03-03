@@ -47,11 +47,11 @@ public class BookDAO {
 			String book_name = rs.getString("book_name");
 //			String author_name = rs.getString("author_name");
 //			String publisher_name = rs.getString("publisher_name");
-//			int    price			= rs.getInt("price");
+//			short    price			= rs.getShort("price");
 //			String  release_date = rs.getString("release_date");
 //			int category_id = rs.getInt("category_id");
-//			String  modify_datetime = rs.getString("modify_datetime");
-//			String 	create_datetime = rs.getString("create_datetime");
+//			Date  modify_datetime = rs.getDate("modify_datetime");
+//			Date 	create_datetime = rs.getDate("create_datetime");
 
 //			インスタンスの生成
 			Book book = new Book(isbn,book_name);

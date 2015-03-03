@@ -1,41 +1,85 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
 
-
+/**
+ *
+ * @author 白川
+ * Bookテーブルに接続し、処理を担当するDAO
+ *
+ */
 public class BookDAOTest {
-	public static void main(String[]args) {
-		testFindBook();
-		testFindBook1();
-	}
-	public static void testFindBook() {
-		//Book book = new Book("1","Head First Java",
-			//	"Kathy Serra", "O'REILLY", 4000, null, 0,
-				//"2015-02-27 20:59:14", null);
-		Book book = new Book();
-		//DAOインスタンスを生成
-		BookDAO dao = new BookDAO();
+	public Book findBook(String a, String b) {
+		Connection conn = null;
+		Book book = null;
+		try{
+			//JDBCドライバを読み込む
+			Class.forName("com.mysql.jdbc.Driver");
 
-		Book result = dao.findBook(book);
-		if(result != null &&
-				result.getBook_name().equals("Head First Java") ||
-				result.getAuthor_name().equals("Kathy Serra") ||
-				result.getPublisher_name().equals("O'REILLY")
-				){
-			System.out.println("testFindBook:成功しました");
-		}else{
-			System.out.println("testFindBook:失敗しました");
+			//データベースに接続
+			conn = DriverManager.getConnection
+					("jdbc:mysql://192.168.137.0:3306/bn_books","bn_user","");
+
+			//Select文を準備
+			String sql = "select isbn,book_name, author_name,publisher_name,price,release_date,"
+					+ "category_id,modify_datetime,create_datetime from book "
+					+ "where book_name = ? and"
+					+ " author_name = ? ";
+//					+ "where publisher_name = ? ";
+
+			//準備したSQL文をPreparedStatementインスタンスに渡す
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, a);
+			pStmt.setString(2, b);
+//			pStmt.setString(3, "O'REILLY");
+
+
+			//select文を実行し、ResultSetインスタンスにSelect文の実行結果を取得
+			ResultSet rs = pStmt.executeQuery();
+
+			//そのBookを表すBookインスタンスを生成
+			while(rs.next()){
+				String isbn			= rs.getString("isbn");
+				String book_name = rs.getString("book_name");
+				String author_name = rs.getString("author_name");
+				String publisher_name = rs.getString("publisher_name");
+				short    price			= rs.getShort("price");
+				String  release_date = rs.getString("release_date");
+				short category_id = rs.getShort("category_id");
+				Date  modify_datetime = rs.getDate("modify_datetime");
+				Date 	create_datetime = rs.getDate("create_datetime");
+
+				 book = new Book(isbn,book_name,author_name,publisher_name,
+						 price, release_date,
+						category_id, modify_datetime,create_datetime ); //
+
+			}
+
+
+
+
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+			return null;
+		}finally{
+			//データベース切断
+			if(conn != null){
+				try{
+					conn.close();
+				}catch(SQLException e){
+					e.printStackTrace();
+					return null;
+
+				}
+			}
 		}
-
-
-	}
-	public static void testFindBook1(){
-		Book book = new Book("1","Head First Java",
-				"Kathy Serra", "O'REILLY", 4000, null, 0,
-				"2015-02-27 20:59:14", null);
-		BookDAO dao = new BookDAO();
-		Book result = dao.findBook(book);
-		if(result == null){
-			System.out.println("testFindBook:成功しました");
-		}else{
-			System.out.println("testFindBook:失敗しました");
-		}
+		//検索結果をまたはnullを返す
+		return book;
 	}
 }
