@@ -88,7 +88,7 @@ public class BookDAOTest {
  *
  */
 	public Book additionBook(String a, String b,
-			String c, String d, int e, String f,int g){
+			String c, String d, short e, String f,short g){
 		Connection conn = null;
 		Book book = null;
 		try{
@@ -110,9 +110,9 @@ public class BookDAOTest {
 			pStmt.setString(2, b);
 			pStmt.setString(3, c);
 			pStmt.setString(4, d);
-			pStmt.setInt(5, e);
+			pStmt.setShort(5, e);
 			pStmt.setString(6, f);
-			pStmt.setInt(7, g);
+			pStmt.setShort(7, g);
 
 			//insert文を実行
 			pStmt.executeUpdate(insert);

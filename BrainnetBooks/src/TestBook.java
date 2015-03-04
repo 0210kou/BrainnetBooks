@@ -68,7 +68,7 @@ public class TestBook {
 
 //		insert
 		Book book4 = test.additionBook("3", "java入門", "中山", "インプレス",
-				2800, "2014-08-11", 5);
+				(short)2800, "2014-08-11", (short)5);
 		sb.append(book4.getIsbn()+ "\n");
 		sb.append(book4.getBook_name()+ "\n");
 		sb.append(book4.getAuthor_name()+ "\n");
