@@ -59,7 +59,7 @@ public class Book implements Serializable{
 	}
 
 	public Book(String isbn, String book_name) {
-		// TODO 自動生成されたコンストラクター・スタブ
+
 		this.isbn = isbn;
 		this.book_name = book_name;
 	}

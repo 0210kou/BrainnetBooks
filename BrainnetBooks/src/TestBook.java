@@ -1,14 +1,10 @@
-import static org.junit.Assert.*;
-
-import java.util.List;
-
 import org.junit.Test;
 
 
 public class TestBook {
 
 //	Bookインスタンスを生成
-	Book book = new Book();
+//	Book book = new Book();
 //	DAOインスタンスを生成
 	BookDAO dao = new BookDAO();
 
@@ -23,42 +19,44 @@ public class TestBook {
 	}
 	@Test public void test1(){
 
-		BookDAO dao = new BookDAO();
-		List<Book> bookList = dao.findBook();
-		Book book = new Book();
-//		System.out.println(book.get(0));
-
-
-		for(Book bookBook : bookList){
-//			System.out.println(bookBook.getIsbn());
-//			System.out.println(bookBook.getBook_name());
-			assertNotNull(bookBook.getIsbn());
-
-		}
-
-	}
-
-	@Test public void test2(){
-		List<Book> bookList = dao.findBook();
-		for(Book bookBook : bookList){
-			assertEquals(bookBook.getBook_name(),"Head First Java");
-//			assertEquals(bookBook.getBook_name(),"First Java");
-			assertNotNull(bookBook.getBook_name());
-		}
-
 
 
 	}
 	@Test public void BookDAOTestテスト(){
 //		Book book = test.findBook();
 //		Book book =  test.findBook("Head First Java","Kathy Serra");
-		Book d = test.findBook("Head First Java","Kathy Serra");
-		System.out.println(d);
+		StringBuilder sb = new StringBuilder();
 
-		//System.out.println(book.getModify_datetime());
+//		Book book = new Book("Head First Java","Kathy Serra");
+		Book book = new Book();
 
-//		assertEquals(book.getBook_name(),"Head First Java");
-//		System.out.println(TimestampUtil.formattedTimestamp(TimestampUtil.current(), TIME_FORMAT));
+//		部分一致
+		Book book3 = test.findBook( "%st%","%rra%");
+
+		sb.append(book3.getBook_name()+ "\n");
+		sb.append(book3.getModify_datetime()+ "\n");
+		sb.append(book3.getIsbn()+ "\n");
+		sb.append(book3.getCategory_id()+ "\n");
+		sb.append("\n");
+
+
+
+//		insert
+		Book book4 = test.additionBook("3", "java入門", "中山", "インプレス",
+				2800, "2014-08-11", 5);
+		sb.append(book4.getIsbn()+ "\n");
+		sb.append(book4.getBook_name()+ "\n");
+		sb.append(book4.getAuthor_name()+ "\n");
+		sb.append(book4.getPublisher_name()+ "\n");
+		sb.append(book4.getPrice()+ "\n");
+		sb.append(book4.getRelease_date()+ "\n");
+		sb.append(book.getCategory_id()+ "\n");
+		sb.append(book.getModify_datetime()+ "\n");
+		sb.append(book.getCreate_datetime()+ "\n");
+
+
+		System.out.println(sb.toString());
+
     }
 
 }
