@@ -100,14 +100,12 @@ public class BookDAOTest {
 					("jdbc:mysql://192.168.137.0:3306/bn_books","bn_user","");
 
 			//Select文を準備
-//			String insert = "insert into book(isbn,book_name,author_name,"
-//					+ "publisher_name,price,release_date,category_id) "
-//					+ " values(?, ?, ?, ?, ?, ?, ?)";
+			String insert = "insert into book(isbn,book_name,author_name,"
+					+ "publisher_name,price,release_date,category_id) "
+					+ " values(?, ?, ?, ?, ?, ?, ?)";
 
 			//準備したSQL文をPreparedStatementインスタンスに渡す
-			PreparedStatement pStmt = conn.prepareStatement("insert into book(isbn,book_name,author_name,"
-					+ "publisher_name,price,release_date,category_id) "
-					+ " values(?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement pStmt = conn.prepareStatement(insert);
 			pStmt.setString(1, a);
 			pStmt.setString(2, b);
 			pStmt.setString(3, c);
@@ -117,7 +115,7 @@ public class BookDAOTest {
 			pStmt.setInt(7, g);
 
 			//insert文を実行
-			pStmt.executeUpdate();
+			pStmt.executeUpdate(insert);
 			/*
 			ResultSet rs = pStmt.executeQuery("SELECT * FROM book");
 
