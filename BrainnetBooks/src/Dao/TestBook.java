@@ -31,22 +31,22 @@ public class TestBook {
 	}*/
 	@Test public void test1(){
 //		部分一致
-//		Book book3 = test.findBook( "%st%","%rra%");
-		Book book3 = test.findBook( "st","rra");
-		sb.append("test1");
-		sb.append("\n");
-		sb.append(book3.getIsbn()+ "\n");
-		sb.append(book3.getBook_name()+ "\n");
-		sb.append(book3.getAuthor_name()+ "\n");
-		sb.append(book3.getPublisher_name()+ "\n");
-		sb.append(book3.getPrice()+ "\n");
-		sb.append(book3.getRelease_date()+ "\n");
-		sb.append(book3.getCategory_id()+ "\n");
-		sb.append(book3.getModify_datetime()+ "\n");
-		sb.append(book3.getCreate_datetime()+ "\n");
-		sb.append("\n");
 
-		System.out.println(sb.toString());
+		Book book3 = test.findBook( "st","rra","O'REILLY","1");
+//		sb.append("test1");
+//		sb.append("\n");
+//		sb.append(book3.getIsbn()+ "\n");
+//		sb.append(book3.getBook_name()+ "\n");
+//		sb.append(book3.getAuthor_name()+ "\n");
+//		sb.append(book3.getPublisher_name()+ "\n");
+//		sb.append(book3.getPrice()+ "\n");
+//		sb.append(book3.getRelease_date()+ "\n");
+//		sb.append(book3.getCategory_id()+ "\n");
+//		sb.append(book3.getModify_datetime()+ "\n");
+//		sb.append(book3.getCreate_datetime()+ "\n");
+//		sb.append("\n");
+//
+//		System.out.println(sb.toString());
 
 
 	}/*
