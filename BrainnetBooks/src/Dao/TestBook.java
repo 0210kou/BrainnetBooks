@@ -1,5 +1,8 @@
+package Dao;
+
 import org.junit.Test;
 
+import Entity.Book;
 
 public class TestBook {
 
@@ -10,7 +13,7 @@ public class TestBook {
 	StringBuilder sb = new StringBuilder();
 
 
-
+/*
 	@Test public void test() {
 		StringBuilder sb = new StringBuilder();
 		Book book = test.findBook("Head First Java","Kathy Serra");
@@ -25,21 +28,28 @@ public class TestBook {
 		sb.append(book.getCreate_datetime()+ "\n");
 		sb.append("\n");
 		System.out.println(sb.toString());
-	}
+	}*/
 	@Test public void test1(){
 //		部分一致
-		Book book3 = test.findBook( "%st%","%rra%");
-
-		sb.append(book3.getBook_name()+ "\n");
-		sb.append(book3.getModify_datetime()+ "\n");
+//		Book book3 = test.findBook( "%st%","%rra%");
+		Book book3 = test.findBook( "st","rra");
+		sb.append("test1");
+		sb.append("\n");
 		sb.append(book3.getIsbn()+ "\n");
+		sb.append(book3.getBook_name()+ "\n");
+		sb.append(book3.getAuthor_name()+ "\n");
+		sb.append(book3.getPublisher_name()+ "\n");
+		sb.append(book3.getPrice()+ "\n");
+		sb.append(book3.getRelease_date()+ "\n");
 		sb.append(book3.getCategory_id()+ "\n");
+		sb.append(book3.getModify_datetime()+ "\n");
+		sb.append(book3.getCreate_datetime()+ "\n");
 		sb.append("\n");
 
 		System.out.println(sb.toString());
 
 
-	}
+	}/*
 	@Test public void Test2(){
 		StringBuilder sb = new StringBuilder();
 
@@ -63,7 +73,7 @@ public class TestBook {
 
 
 
-	}
+	}*//*
 	@Test public void Test3(){
 
 //		insert
@@ -82,7 +92,7 @@ public class TestBook {
 
 		System.out.println(sb.toString());
 
-    }
+    }*/
 
 }
 
