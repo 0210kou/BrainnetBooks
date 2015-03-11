@@ -1,6 +1,6 @@
 package Dao;
 
-import static org.junit.Assert.*;
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ public class TestBook {
 	StringBuilder sb = new StringBuilder();
 
 
-
+/*
 	@Test public void test() {
 
 		Book book = test.findBook("First Java","Serra","ILLY","3");
@@ -84,10 +84,19 @@ public class TestBook {
 //		第二引数がnullでないことを検証。
 		assertNotNull(book7.getCreate_datetime());
 
-	}
+	} */
 	@Test public void Test5(){
+		BookDAO test = new BookDAO();
+		ArrayList<Book> book8 = test.findBook("java","","","4");
 
 
+
+
+
+
+	}@Test public void Test6(){
+		BookDAO test = new BookDAO();
+		ArrayList<Book> book9 = test.findBook("","","","");
 	}
 
 

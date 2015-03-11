@@ -17,7 +17,7 @@ public class Book implements Serializable{
 	Date d = new Date();
 //	SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-//	Timestamp t = new Timestamp(modify_datetime);
+//	Timestamp t = new Timestamp(modifyDatetime);
 
 	//
 	//
@@ -28,14 +28,14 @@ public class Book implements Serializable{
 	 * 格フィールドをprivateで設定
 	 */
 	private String	isbn; 				//ISBN番号
-	private String	book_name; 			//書籍名
-	private String	author_name;		//著者名
-	private String	publisher_name;		//出版社名
+	private String	bookName; 			//書籍名
+	private String	authorName;		//著者名
+	private String	publisherName;		//出版社名
 	private short   	price;				//税抜価格
-	private String  release_date;		//発売日
-	private short 	category_id;		//カテゴリID
-	private Date  modify_datetime = d;	//更新日時
-	private Date 	create_datetime = d;	//登録日時
+	private String  releaseDate;		//発売日
+	private short 	categoryId ;		//カテゴリID
+	private Date  modifyDatetime = d;	//更新日時
+	private Date 	createDatetime = d;	//登録日時
 
 	/**
 	 * 引数なしでもnewできるような戻り値なしのコンストラクタ
@@ -46,45 +46,57 @@ public class Book implements Serializable{
 	/**
 	 * 戻り値ありのコンストラクタ
 	 */
-	public Book(String isbn,String book_name,String author_name,String publisher_name,short price,String release_date,
-			short category_id,Date modify_datetime,Date create_datetime){
+	public Book(String isbn,String bookName,String authorName,String publisherName,short price,String releaseDate,
+			short categoryId,Date modifyDatetime,Date createDatetime){
 		this.isbn = isbn;
-		this.book_name = book_name;
-		this.author_name = author_name;
-		this.publisher_name = publisher_name;
+		this.bookName = bookName;
+		this.authorName = authorName;
+		this.publisherName = publisherName;
 		this.price = price;
-		this.release_date = release_date;
-		this.category_id = category_id;
-		this.modify_datetime = modify_datetime;
-		this.create_datetime = create_datetime;
+		this.releaseDate = releaseDate;
+		this.categoryId = categoryId;
+		this.modifyDatetime = modifyDatetime;
+		this.createDatetime = createDatetime;
 
 	}
 
 	@Override
 	public String toString() {
 //	検索結果を返す書籍名、著者名、出版社名、税抜き価格を返す
-		return this.book_name + "\n" +this.author_name +
-				"\n" +this.publisher_name + "\n" +this.price;
+		return "\n" +this.isbn + "\n" + this.bookName + "\n" +this.authorName +
+				"\n" +this.publisherName + "\n" +this.price
+				 + "\n" +this.releaseDate + "\n" +this.categoryId
+				+ "\n" +this.modifyDatetime + "\n" +this.createDatetime + " " + "\n";
 	}
-	public Book(String isbn, String book_name) {
+	public Book(String isbn, String bookName) {
 
 		this.isbn = isbn;
-		this.book_name = book_name;
+		this.bookName = bookName;
 	}
-	public Book(String isbn, String book_name, String author_name,
-			String publisher_name, short price, String release_date,
-			short category_id, Date modify_datetime) {
+	public Book(String isbn, String bookName, String authorName,
+			String publisherName, short price, String releaseDate,
+			short categoryId, Date modifyDatetime) {
 		// TODO 自動生成されたコンストラクター・スタブ
 		this.isbn = isbn;
-		this.book_name = book_name;
-		this.author_name = author_name;
-		this.publisher_name = publisher_name;
+		this.bookName = bookName;
+		this.authorName = authorName;
+		this.publisherName = publisherName;
 		this.price = price;
-		this.release_date = release_date;
-		this.category_id = category_id;
-		this.modify_datetime = modify_datetime;
+		this.releaseDate = releaseDate;
+		this.categoryId = categoryId;
+		this.modifyDatetime = modifyDatetime;
 
 	}
+	public Book(String bookName, String authorName, String publisherName, short categoryId) {
+		// TODO 自動生成されたコンストラクター・スタブ
+		this.bookName = bookName;
+		this.authorName = authorName;
+		this.publisherName = publisherName;
+		this.categoryId = categoryId;
+	}
+
+
+
 	/**
 	 * 格フィールドのゲッター
 	 */
@@ -92,33 +104,33 @@ public class Book implements Serializable{
 		return isbn;
 	}
 
-	public String getBook_name() {
-		return book_name;
+	public String getBookName() {
+		return bookName;
 	}
 
-	public String getAuthor_name() {
-		return author_name;
+	public String getAuthorName() {
+		return authorName;
 	}
-	public String getPublisher_name() {
-		return publisher_name;
+	public String getPublisherName() {
+		return publisherName;
 	}
 	public short getPrice(){
 		return price;
 	}
 
-	public String getRelease_date() {
-		return release_date;
+	public String getReleaseDate() {
+		return releaseDate;
 	}
 
-	public short getCategory_id() {
-		return category_id;
+	public short getCategoryId() {
+		return categoryId;
 	}
 
-	public Date getModify_datetime() {
-		return modify_datetime;
+	public Date getModifyDatetime() {
+		return modifyDatetime;
 	}
-	public Date getCreate_datetime() {
-		return create_datetime;
+	public Date getCreateDatetime() {
+		return createDatetime;
 	}
 
 

@@ -31,8 +31,8 @@ public class BookDAOTest {
 
 			//Select文を準備(5.1検索結果には書籍名、著者名、出版社名、税抜き価格)を表示する
 			String sql = "select * from book "
-					+ "where book_name like ? and" //primary
-					+ " author_name like ? and"		//primary book_name,author_name,publisher_name,price
+					+ "where book_name like ? or" //primary
+					+ " author_name like ? or"		//primary book_name,author_name,publisher_name,price
 					+ " publisher_name = ? and" //secondary
 					+ " category_id = ? "; //secondary
 //
